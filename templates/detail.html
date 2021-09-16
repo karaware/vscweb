@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+  <div class='container'>
+    <div class="card">
+      <h5 class="card-header">{{ object.videoTitle }}</h5>
+      <div class="card-body">
+        <div class="card">
+          <h7 class="card-header">サムネイル</h7>
+          <div class="card-body">
+            <img src="{{ object.s3ThumbnailUrl }}">
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">配信同時接続者数グラフ</h7>
+          <div class="card-body">
+            <a href="{{ object.s3GraphUrl }}"><img src="{{ object.s3GraphUrl }}" width="320" height="180"></a>
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">配信URL</h7>
+          <div class="card-body">
+            <a href="{{ object.videoUrl }}">{{ object.videoUrl }}</a>
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">配信開始時間</h7>
+          <div class="card-body">
+            {{ object.startTime }}
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">配信終了時間</h7>
+          <div class="card-body">
+            {{ object.endTime }}
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">最高同時接続者数</h7>
+          <div class="card-body">
+            {{ object.maxViewers }}
+          </div>
+        </div>
+        <div class="card">
+          <h7 class="card-header">配信終了時高評価数</h7>
+          <div class="card-body">
+            {{ object.likeCount }}
+          </div>
+        </div>
+        <a href="{% url 'list' %}" class="btn btn-primary">一覧へ</a>
+    </div>
+  </div>
+{% endblock content %}
